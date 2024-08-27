@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caile Fire - Cheats y Modificaciones de Elite para Free Fire</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap');
+
+:root {
+    --primary-color: #1f6feb;
+    --secondary-color: #16213e;
+    --accent-color: #0f3460;
+    --text-color: #ffffff;
+    --neon-glow: 0 0 10px var(--primary-color), 0 0 20px var(--primary-color), 0 0 30px var(--primary-color);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #0d1117;
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+#background-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+header {
+    text-align: center;
+    padding: 40px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 4.5em;
+    margin-bottom: 20px;
+    text-shadow: var(--neon-glow);
+    animation: neonPulse 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes neonPulse {
+    from {
+        text-shadow: var(--neon-glow);
+    }
+    to {
+        text-shadow: 0 0 20px var(--primary-color), 0 0 35px var(--primary-color), 0 0 40px var(--primary-color);
+    }
+}
+
+nav {
+    background-color: rgba(31, 111, 235, 0.1);
+    padding: 15px;
+    border-radius: 50px;
+    box-shadow: 0 0 30px rgba(31, 111, 235, 0.7);
+    backdrop-filter: blur(10px);
+    margin-bottom: 40px;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    margin: 10px;
+}
+
+nav ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    padding: 10px 20px;
+    border-radius: 25px;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    font-size: 1.1em;
+    text-transform: uppercase;
+}
+
+nav ul li a:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: all 0.5s;
+}
+
+nav ul li a:hover:before {
+    left: 100%;
+}
+
+nav ul li a:hover {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    transform: scale(1.1);
+    box-shadow: 0 0 15px var(--primary-color);
+    animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 15px var(--primary-color);
+    }
+    50% {
+        box-shadow: 0 0 25px var(--primary-color);
+    }
+    100% {
+        box-shadow: 0 0 15px var(--primary-color);
+    }
+}
+
+main {
+    background-color: rgba(31, 111, 235, 0.05);
+    padding: 40px;
+    border-radius: 20px;
+    margin-top: 40px;
+    box-shadow: 0 0 30px rgba(31, 111, 235, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+section {
+    margin-bottom: 50px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s ease;
+}
+
+section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.5em;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+h2:after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: var(--primary-color);
+    animation: extend 2s ease-out infinite;
+}
+
+@keyframes extend {
+    0% { width: 50px; }
+    50% { width: 100%; }
+    100% { width: 50px; }
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 20px;
+}
+
+ul li {
+    margin-bottom: 15px;
+    position: relative;
+    padding-left: 30px;
+    font-size: 1.1em;
+}
+
+ul li:before {
+    content: '\f14a';
+    font-family: 'Font Awesome 5 Free';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.product-card {
+    background: rgba(31, 111, 235, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 10px;
+    width: 240px;
+    height: 320px;
+    text-align: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.product-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(31, 111, 235, 0.3);
+}
+
+.product-card h3 {
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 10px;
+}
+
+.btn-container {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: 15px 30px;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 10px;
+}
+
+.btn:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: all 0.5s;
+    z-index: -1;
+}
+
+.btn:hover:before {
+    left: 100%;
+}
+
+.btn:hover {
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0 10px 20px rgba(31, 111, 235, 0.5);
+    animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 10px 20px rgba(31, 111, 235, 0.3);
+    }
+    50% {
+        box-shadow: 0 20px 40px rgba(31, 111, 235, 0.5);
+    }
+    100% {
+        box-shadow: 0 10px 20px rgba(31, 111, 235, 0.3);
+    }
+}
+
+
+footer {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    background-color: rgba(31, 111, 235, 0.05);
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+footer:before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(transparent, rgba(31, 111, 235, 0.3), transparent 30%);
+    animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+    100% { transform: rotate(1turn); }
+}
+
+
+
+
+        #product-showcase {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.product-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    width: 250px;
+    text-align: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px; /* Incrementa la altura de las imágenes */
+    border-radius: 10px;
+    margin-bottom: 15px;
+    object-fit: cover; /* Asegura que la imagen se recorte para encajar */
+}
+
+
+.product-card h3 {
+    font-family: 'Orbitron', sans-serif;
+    margin-bottom: 10px;
+}
+
+
+        #testimonials {
+            margin-top: 50px;
+        }
+
+        .testimonial {
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .testimonial:before {
+            content: '\201C';
+            font-size: 4em;
+            position: absolute;
+            left: 10px;
+            top: -10px;
+            color: var(--primary-color);
+            opacity: 0.5;
+        }
+
+        .testimonial p {
+            font-style: italic;
+        }
+
+        .testimonial .author {
+            text-align: right;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        #features {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .feature {
+            text-align: center;
+            width: 200px;
+            margin: 20px;
+        }
+
+        .feature i {
+            font-size: 3em;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        #cta {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        #cta h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        #cta .btn {
+            font-size: 1.2em;
+            padding: 15px 40px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="background-canvas"></canvas>
+    <div class="container">
+        <header>
+            <h1>Caile Fire</h1>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#testimonios">Testimonios</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section id="inicio">
+                <h2>Bienvenido a Caile Fire</h2>
+                <p>Somos líderes en el desarrollo de cheats y modificaciones para Free Fire. Nuestros productos están diseñados para mejorar tu experiencia de juego y llevarte al siguiente nivel.</p>
+            </section>
+
+            <section id="productos">
+                <h2>Nuestros Productos</h2>
+                <div id="product-showcase">
+                    <div class="product-card">
+                        <img src="https://static-cdn.jtvnw.net/ttv-boxart/502732_IGDB-272x380.jpg" alt="Panel Free Fire">
+                        <h3>Panel Free Fire</h3>
+                        <p>Domina el campo de batalla</p>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://i.ytimg.com/vi/zbkY4vbmt2I/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLC8U7HhpYvD4NHdO96Y3gtix1BSnA" alt="Bypass">
+                        <h3>Bypass</h3>
+                        <p>Evade la detección</p>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://i.ytimg.com/vi/y6QsUzGIicQ/maxresdefault.jpg" alt="Aimbot">
+                        <h3>Aimbot</h3>
+                        <p>Precisión inigualable</p>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://www.ceupe.com/images/easyblog_articles/3919/b2ap3_amp_cdigo-fuente.jpg" alt="Códigos">
+                        <h3>Códigos</h3>
+                        <p>Personaliza tu experiencia</p>
+                    </div>
+                </div>
+                <a href="#" class="btn">Explorar Catálogo Completo</a>
+            </section>
+
+            <section id="nosotros">
+                <h2>Nuestro Compromiso</h2>
+                <p>En Caile Fire, nos dedicamos a la excelencia. Nuestro equipo de desarrolladores de élite trabaja incansablemente para crear soluciones innovadoras que transformarán tu experiencia en Free Fire.</p>
+                <div id="features">
+                    <div class="feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <h3>Seguridad Garantizada</h3>
+                        <p>Protección avanzada contra detección</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <h3>Rendimiento Óptimo</h3>
+                        <p>Mejoras de FPS y estabilidad</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-sync-alt"></i>
+                        <h3>Actualizaciones Constantes</h3>
+                        <p>Siempre a la vanguardia</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="testimonios">
+                <h2>Lo que dicen nuestros clientes</h2>
+                <div class="testimonial">
+                    <p>"Caile Fire ha revolucionado mi forma de jugar Free Fire. ¡Increíble servicio!"</p>
+                    <div class="author">- Alex G.</div>
+                </div>
+                <div class="testimonial">
+                    <p>"La calidad y el soporte son incomparables. 100% recomendado."</p<div class="testimonial">
+                    
+                    <div class="author">- Maria L.</div>
+                </div>
+            </section>
+
+            <section id="contacto">
+                <h2>Contáctanos</h2>
+                <p>¿Listo para llevar tu juego de Free Fire al siguiente nivel? Únete a nuestro servidor de Discord para obtener soporte y acceso a nuestros productos.</p>
+                <a href="https://discord.gg/B3kbvQVfBh" class="btn" target="_blank">Unirse a Discord</a>
+            </section>
+
+            <section id="cta">
+                <h2>¡Únete a la élite de jugadores de Free Fire hoy!</h2>
+                <p>No te quedes atrás. Descubre el poder de Caile Fire y domina Free Fire como nunca antes.</p>
+                <a href="#" class="btn">Comenzar Ahora</a>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Caile Fire. Todos los derechos reservados.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Animación de aparición de secciones
+        const sections = document.querySelectorAll('section');
+        const options = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, options);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // Fondo animado con Three.js
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('background-canvas'), alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        const geometry = new THREE.BufferGeometry();
+        const vertices = [];
+        const sizes = [];
+
+        for (let i = 0; i < 10000; i++) {
+            const x = (Math.random() - 0.5) * 2000;
+            const y = (Math.random() - 0.5) * 2000;
+            const z = (Math.random() - 0.5) * 2000;
+            vertices.push(x, y, z);
+            sizes.push(Math.random() * 2);
+        }
+
+        geometry.setAttribute('position', new THREE.Float32BufferAttribute(vertices, 3));
+        geometry.setAttribute('size', new THREE.Float32BufferAttribute(sizes, 1));
+
+        const material = new THREE.ShaderMaterial({
+            uniforms: {
+                color: { value: new THREE.Color(0xe94560) },
+                time: { value: 0 },
+            },
+            vertexShader: `
+                uniform float time;
+                attribute float size;
+                varying vec3 vColor;
+                void main() {
+                    vColor = color;
+                    vec3 pos = position;
+                    pos.y += sin(time * 0.2 + position.x * 0.05) * 5.0;
+                    vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
+                    gl_PointSize = size * (300.0 / -mvPosition.z);
+                    gl_Position = projectionMatrix * mvPosition;
+                }
+            `,
+            fragmentShader: `
+                varying vec3 vColor;
+                void main() {
+                    float strength = distance(gl_PointCoord, vec2(0.5));
+                    strength = 1.0 - strength;
+                    strength = pow(strength, 3.0);
+                    vec3 color = mix(vec3(0.0), vColor, strength);
+                    gl_FragColor = vec4(color, strength);
+                }
+            `,
+            transparent: true,
+            depthWrite: false,
+            blending: THREE.AdditiveBlending
+        });
+
+        const particles = new THREE.Points(geometry, material);
+        scene.add(particles);
+
+        camera.position.z = 500;
+
+        function animate() {
+            requestAnimationFrame(animate);
+            particles.material.uniforms.time.value += 0.01;
+            particles.rotation.x += 0.0005;
+            particles.rotation.y += 0.0005;
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>
